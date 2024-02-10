@@ -15,6 +15,8 @@ dfx canister call dip721_nft_container mintDip721 \
     "(principal\"$YOU\",vec{record{
         purpose=variant{Rendered};
         data=blob\"hello\";
+        city=\"Istanbul\";
+        weather_condition = variant{Snow};
         key_val_data=vec{
             record{
                 \"contentType\";

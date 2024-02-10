@@ -47,8 +47,20 @@ pub struct MetadataPart {
     pub purpose: MetadataPurpose,
     pub key_val_data: HashMap<String, MetadataVal>,
     pub data: Vec<u8>,
+    pub city: String, //Each NFT represents one city
+    pub weather_condition:WeatherCondition,
 }
-
+//Ading relative weather condition enum in order to match each NFT to one weather condition
+#[derive(CandidType, Deserialize, PartialEq)]
+pub enum WeatherCondition {
+    Thunderstorm,
+    Drizzle,
+    Rain,
+    Snow,
+    Atmosphere,
+    Clear,
+    Clouds
+}
 #[derive(CandidType, Deserialize, PartialEq)]
 pub enum MetadataPurpose {
     Preview,
