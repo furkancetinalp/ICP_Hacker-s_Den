@@ -1,4 +1,15 @@
 
+To Deploy
+
+```
+fx deploy --argument 'record{name="DFX Blobs";symbol="DFXB";custodians=null;logo=null}' dip721_nft_container
+
+```
+
+
+
+
+To call mintDip721
 ```
 dfx canister call dip721_nft_container mintDip721 \
     "(principal\"kopdi-nmhgu-x6de7-2iktk-7ylbn-422aq-u4w5b-dfneu-lxxb4-yzu4j-tqe\",vec{record{
