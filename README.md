@@ -32,8 +32,8 @@ dfx canister call dip721_nft_container mintDip721 \
 ```
 After deploying and minting NFT, we can check the NFT and its info using whether id or principal:
 
-When an NFT is minted, its id is set to 0  and we can check its details using 'getMetadataDip721' by typing id:
-(when we mint another NFT, its id will be 1 and for other mintings, it will continue arithmetically)
+When an NFT is minted, its id is assigned as 0 (because it is the first NFT) and we can check its details using 'getMetadataDip721' by typing id:
+
 
 ![1](https://github.com/furkancetinalp/ICP_Hacker-s_Den/assets/99509540/6adf2ae4-1984-413b-8163-929e2bd6ee69)
 
