@@ -7,7 +7,7 @@ extern crate serde;
 
 mod http;
 mod types;
-
+use crate::types::WeatherCondition;
 use std::borrow::Cow;
 use std::cell::RefCell;
 use std::collections::HashSet;
@@ -188,6 +188,59 @@ fn get_metadata(/* token_id: u64 */) /* -> Result<&'static MetadataDesc> */
         call::reply((Err::<MetadataDesc, _>(e),));
     }
 }
+
+#[export_name = "canister_query getCity"]
+fn get_city() 
+{
+    ic_cdk::setup();
+    let token_id = call::arg_data::<(u64,)>().0;
+    let res: Result<()> = STATE.with(|state| {
+        let state = state.borrow();
+        let metadata = &state
+            .nfts
+            .get(usize::try_from(token_id)?)
+            .ok_or(Error::Other)?
+            .metadata;
+        let city = (metadata.first().ok_or(Error::Other))?.city.to_string();
+
+        call::reply((city,));
+        Ok(())
+    });
+    if let Err(e) = res {
+        call::reply(("Not found".to_string(),));
+    }
+}
+
+#[export_name = "canister_query getWeatherCondition"]
+fn get_Weather_condition() 
+{
+    ic_cdk::setup();
+    let token_id = call::arg_data::<(u64,)>().0;
+    let res: Result<()> = STATE.with(|state| {
+        let state = state.borrow();
+        let metadata = &state
+            .nfts
+            .get(usize::try_from(token_id)?)
+            .ok_or(Error::Other)?
+            .metadata;
+        let weather_condition = (metadata.first().ok_or(Error::Other))?.weather_condition.clone();
+        let mut data = "".to_string();
+        match weather_condition {
+            WeatherCondition::Atmosphere => call::reply(("Atmosphere".to_string(),)),
+            WeatherCondition::Clear => call::reply(("Clear".to_string(),)),
+            WeatherCondition::Clouds => call::reply(("Clouds".to_string(),)),
+            WeatherCondition::Drizzle => call::reply(("Drizzle".to_string(),)),
+            WeatherCondition::Rain => call::reply(("Rain".to_string(),)),
+            WeatherCondition::Snow => call::reply(("Snow".to_string(),)),
+            WeatherCondition::Thunderstorm => call::reply(("Thunderstorm".to_string(),)),
+        }
+        Ok(())
+    });
+    if let Err(e) = res {
+        call::reply(("An Error occurred".to_string(),));
+    }
+}
+
 
 #[export_name = "canister_update getMetadataForUserDip721"]
 fn get_metadata_for_user(/* user: Principal */) /* -> Vec<ExtendedMetadataResult> */

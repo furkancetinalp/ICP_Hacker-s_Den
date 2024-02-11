@@ -51,7 +51,7 @@ pub struct MetadataPart {
     pub weather_condition:WeatherCondition,
 }
 //Ading relative weather condition enum in order to match each NFT to one weather condition
-#[derive(CandidType, Deserialize, PartialEq)]
+#[derive(CandidType, Deserialize, PartialEq,Clone)]
 pub enum WeatherCondition {
     Thunderstorm,
     Drizzle,

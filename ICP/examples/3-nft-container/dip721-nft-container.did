@@ -156,6 +156,8 @@ service : (InitArgs) -> {
     isApprovedForAllDip721 : (operator : principal) -> (bool) query;
     mintDip721 : (to : principal, metadata : MetadataDesc, blobContent : blob) -> (MintReceipt);
     burnDip721 : (token_id : nat64) -> (TxReceipt);
+    getCity : (token_id : nat64) -> (text) query;
+    getWeatherCondition : (token_id : nat64) -> (text) query;
 
     set_name : (name : text) -> (ManageResult);
     set_symbol : (sym : text) -> (ManageResult);
