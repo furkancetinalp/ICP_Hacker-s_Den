@@ -2,7 +2,7 @@
 To Deploy
 
 ```
-fx deploy --argument 'record{name="DFX Blobs";symbol="DFXB";custodians=null;logo=null}' dip721_nft_container
+dfx deploy --argument 'record{name="DFX Blobs";symbol="DFXB";custodians=null;logo=null}' dip721_nft_container
 
 ```
 
