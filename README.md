@@ -28,7 +28,6 @@ dfx canister call dip721_nft_container mintDip721 \
             };
         }
     }},blob\"hello\")"
-(variant { Ok = record { id = 0 : nat; token_id = 0 : nat64 } })
 ```
 After deploying and minting NFT, we can check the NFT and its info using whether id or principal:
 
